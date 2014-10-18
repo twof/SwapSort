@@ -10,7 +10,7 @@ I plan on continuing to extend this until the improvements are negligible.
 Notes:
 
 As it stands now:
-100,000 int array sorted in ~900 miliseconds
+100,000 int array sorted in ~500 miliseconds
 1,000,000 int array sorted in ~46000 miliseconds
 This is on a MacBook Pro
 2 GHz Intel Core i7
