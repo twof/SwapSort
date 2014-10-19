@@ -2,7 +2,7 @@ SwapSort
 ========
 
 Sorting Logic: Check the highest and lowest elements. If the highest(subscript 0) is greater than the lowest, swap them. Continute inwards.
-Do the same in halves, quarters, eighths, sixteenths, and 32nds.
+Do the same in halves, quarters, eighths, sixteenths, 32nds, and 64ths.
 Then bubble sort and repeat until sorted. 
 
 I plan on continuing to extend this until the improvements are negligible. 
@@ -10,8 +10,8 @@ I plan on continuing to extend this until the improvements are negligible.
 Notes:
 
 As it stands now:
-100,000 int array sorted in ~500 miliseconds
-1,000,000 int array sorted in ~46000 miliseconds
+100,000 int array sorted in ~300 miliseconds
+1,000,000 int array sorted in ~25000 miliseconds
 This is on a MacBook Pro
 2 GHz Intel Core i7
 16 GB 1600 MHz DDR3

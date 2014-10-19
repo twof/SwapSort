@@ -5,22 +5,22 @@ using namespace std;
 void arrayFiller(int SortableArray[]);
 void swapSort(int SortableArray[]);
 
-const int SIZE = 300000;
+const int SIZE = 1000000; //size of the array being sorted. Change this to change the size.
 
 int main(){
-    int SortableArray[SIZE];
-    srand(time(0));
-    arrayFiller(SortableArray);
-    swapSort(SortableArray);
-    /*for (int i=0; i<SIZE;i++) {
+    int SortableArray[SIZE]; //array to be sorted
+    srand(time(0)); //seed rand for filling the array
+    arrayFiller(SortableArray); //fill the array
+    swapSort(SortableArray); //sort the array
+    /*for (int i=0; i<SIZE;i++) {  //uncomment this for loop to print the sorted array. Commented out to test for time
         cout << i << ": " << SortableArray[i] << endl;
     }*/
-    return 0;
+    return 0; //end
 }
 
 void arrayFiller(int SortableArray[]){
     for (int i=0; i<SIZE; i++){
-        SortableArray[i] = rand()%1000000;
+        SortableArray[i] = rand()%10000000; //fill the array with numbers between 1 and 10000000
     }
 }
 
@@ -30,6 +30,8 @@ void swapSort(int SortableArray[]){
     int counter = 0;
     
     while (sorted==false) {
+        
+        /*this is the swapping block. See readme for the logic*/
         for (int i=0; i<SIZE/2; i++){ //Swapping mechanism
             if (SortableArray[i]>SortableArray[SIZE-(1+i)]){
                 temp = SortableArray[i];
@@ -537,23 +539,540 @@ void swapSort(int SortableArray[]){
             }
         }
         
-        /*for (int i=0; i<SIZE;i++) {
-            cout << i << ": " << SortableArray[i] << endl;
-        }*/
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism first sixtyfourth
+            if (SortableArray[i]>SortableArray[SIZE/64-(1+i)]){
+                temp = SortableArray[i];
+                SortableArray[i] = SortableArray[SIZE/64-(1+i)];
+                SortableArray[SIZE/64-(1+i)]=temp;
+            }
+        }
         
-        for (int i=0; i<SIZE-1; i++){ //Bubble sort
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism second sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)]>SortableArray[SIZE/64-(1+i)+SIZE/64]){
+                temp = SortableArray[SIZE/64-(1-i)];
+                SortableArray[SIZE/64-(1-i)] = SortableArray[SIZE/64-(1+i)+SIZE/64];
+                SortableArray[SIZE/64-(1+i)+SIZE/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism third sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE/64]>SortableArray[SIZE/64-(1+i)+SIZE*2/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE/64];
+                SortableArray[SIZE/64-(1-i)+SIZE/64] = SortableArray[SIZE/64-(1+i)+SIZE*2/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*2/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism fourth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*2/64]>SortableArray[SIZE/64-(1+i)+SIZE*3/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*2/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*2/64] = SortableArray[SIZE/64-(1+i)+SIZE*3/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*3/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism fifth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*3/64]>SortableArray[SIZE/64-(1+i)+SIZE*4/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*3/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*3/64] = SortableArray[SIZE/64-(1+i)+SIZE*4/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*4/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism sixth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*4/64]>SortableArray[SIZE/64-(1+i)+SIZE*5/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*4/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*4/64] = SortableArray[SIZE/64-(1+i)+SIZE*5/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*5/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism seventh sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*5/64]>SortableArray[SIZE/64-(1+i)+SIZE*6/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*5/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*5/64] = SortableArray[SIZE/64-(1+i)+SIZE*6/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*6/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism eighth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*6/64]>SortableArray[SIZE/64-(1+i)+SIZE*7/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*6/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*6/64] = SortableArray[SIZE/64-(1+i)+SIZE*7/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*7/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism ninth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*7/64]>SortableArray[SIZE/64-(1+i)+SIZE*8/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*7/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*7/64] = SortableArray[SIZE/64-(1+i)+SIZE*8/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*8/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism tenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*8/64]>SortableArray[SIZE/64-(1+i)+SIZE*9/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*8/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*8/64] = SortableArray[SIZE/64-(1+i)+SIZE*9/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*9/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism eleventh sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*9/64]>SortableArray[SIZE/64-(1+i)+SIZE*10/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*9/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*9/64] = SortableArray[SIZE/64-(1+i)+SIZE*10/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*10/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twelfth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*10/64]>SortableArray[SIZE/64-(1+i)+SIZE*11/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*10/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*10/64] = SortableArray[SIZE/64-(1+i)+SIZE*11/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*11/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism thirteenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*11/64]>SortableArray[SIZE/64-(1+i)+SIZE*12/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*11/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*11/64] = SortableArray[SIZE/64-(1+i)+SIZE*12/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*12/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism fourteenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*12/64]>SortableArray[SIZE/64-(1+i)+SIZE*13/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*12/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*12/64] = SortableArray[SIZE/64-(1+i)+SIZE*13/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*13/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism fifteenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*13/64]>SortableArray[SIZE/64-(1+i)+SIZE*14/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*13/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*13/64] = SortableArray[SIZE/64-(1+i)+SIZE*14/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*14/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism sixteenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*14/64]>SortableArray[SIZE/64-(1+i)+SIZE*15/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*14/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*14/64] = SortableArray[SIZE/64-(1+i)+SIZE*15/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*15/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism seventeenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*15/64]>SortableArray[SIZE/64-(1+i)+SIZE*16/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*15/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*15/64] = SortableArray[SIZE/64-(1+i)+SIZE*16/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*16/64]=temp;
+            }
+        }
+        
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism eightteenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*16/64]>SortableArray[SIZE/64-(1+i)+SIZE*17/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*16/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*16/64] = SortableArray[SIZE/64-(1+i)+SIZE*17/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*17/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism nineteenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*17/64]>SortableArray[SIZE/64-(1+i)+SIZE*18/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*17/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*17/64] = SortableArray[SIZE/64-(1+i)+SIZE*18/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*18/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentieth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*18/64]>SortableArray[SIZE/64-(1+i)+SIZE*19/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*18/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*18/64] = SortableArray[SIZE/64-(1+i)+SIZE*19/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*19/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyfirst sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*19/64]>SortableArray[SIZE/64-(1+i)+SIZE*20/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*19/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*19/64] = SortableArray[SIZE/64-(1+i)+SIZE*20/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*20/64]=temp;
+            }
+        }
+        
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentysecond sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*20/64]>SortableArray[SIZE/64-(1+i)+SIZE*21/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*20/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*20/64] = SortableArray[SIZE/64-(1+i)+SIZE*21/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*21/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentythird sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*21/64]>SortableArray[SIZE/64-(1+i)+SIZE*22/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*21/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*21/64] = SortableArray[SIZE/64-(1+i)+SIZE*22/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*22/64]=temp;
+            }
+        }
+        
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyfourth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*22/64]>SortableArray[SIZE/64-(1+i)+SIZE*23/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*22/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*22/64] = SortableArray[SIZE/64-(1+i)+SIZE*23/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*23/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyfifth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*23/64]>SortableArray[SIZE/64-(1+i)+SIZE*24/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*23/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*23/64] = SortableArray[SIZE/64-(1+i)+SIZE*24/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*24/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentysixth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*24/64]>SortableArray[SIZE/64-(1+i)+SIZE*25/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*24/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*24/64] = SortableArray[SIZE/64-(1+i)+SIZE*25/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*25/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyseventh sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*25/64]>SortableArray[SIZE/64-(1+i)+SIZE*26/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*25/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*25/64] = SortableArray[SIZE/64-(1+i)+SIZE*26/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*26/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyeighth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*26/64]>SortableArray[SIZE/64-(1+i)+SIZE*27/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*26/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*26/64] = SortableArray[SIZE/64-(1+i)+SIZE*27/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*27/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyninth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*27/64]>SortableArray[SIZE/64-(1+i)+SIZE*28/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*27/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*27/64] = SortableArray[SIZE/64-(1+i)+SIZE*28/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*28/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism thirtieth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*28/64]>SortableArray[SIZE/64-(1+i)+SIZE*29/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*28/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*28/64] = SortableArray[SIZE/64-(1+i)+SIZE*29/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*29/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism thirtyfirst sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*29/64]>SortableArray[SIZE/64-(1+i)+SIZE*30/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*29/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*29/64] = SortableArray[SIZE/64-(1+i)+SIZE*30/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*30/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyseventh sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*30/64]>SortableArray[SIZE/64-(1+i)+SIZE*31/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*30/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*30/64] = SortableArray[SIZE/64-(1+i)+SIZE*31/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*31/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyeighth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*31/64]>SortableArray[SIZE/64-(1+i)+SIZE*32/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*31/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*31/64] = SortableArray[SIZE/64-(1+i)+SIZE*32/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*32/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyninth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*32/64]>SortableArray[SIZE/64-(1+i)+SIZE*33/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*32/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*32/64] = SortableArray[SIZE/64-(1+i)+SIZE*33/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*33/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism thirtieth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*33/64]>SortableArray[SIZE/64-(1+i)+SIZE*34/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*33/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*33/64] = SortableArray[SIZE/64-(1+i)+SIZE*34/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*34/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism thirtyfirst sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*34/64]>SortableArray[SIZE/64-(1+i)+SIZE*35/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*34/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*34/64] = SortableArray[SIZE/64-(1+i)+SIZE*35/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*35/64]=temp;
+            }
+        }
+        
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism fourth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*35/64]>SortableArray[SIZE/64-(1+i)+SIZE*36/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*35/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*35/64] = SortableArray[SIZE/64-(1+i)+SIZE*36/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*36/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism fifth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*36/64]>SortableArray[SIZE/64-(1+i)+SIZE*37/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*36/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*36/64] = SortableArray[SIZE/64-(1+i)+SIZE*37/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*37/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism sixth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*37/64]>SortableArray[SIZE/64-(1+i)+SIZE*38/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*37/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*37/64] = SortableArray[SIZE/64-(1+i)+SIZE*38/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*38/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism seventh sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*38/64]>SortableArray[SIZE/64-(1+i)+SIZE*39/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*38/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*38/64] = SortableArray[SIZE/64-(1+i)+SIZE*39/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*39/64]=temp;
+            }
+        }
+        
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism ninth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*39/64]>SortableArray[SIZE/64-(1+i)+SIZE*40/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*39/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*39/64] = SortableArray[SIZE/64-(1+i)+SIZE*40/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*40/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism tenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*40/64]>SortableArray[SIZE/64-(1+i)+SIZE*41/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*40/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*40/64] = SortableArray[SIZE/64-(1+i)+SIZE*41/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*41/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism eleventh sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*41/64]>SortableArray[SIZE/64-(1+i)+SIZE*42/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*41/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*41/64] = SortableArray[SIZE/64-(1+i)+SIZE*42/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*42/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twelfth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*42/64]>SortableArray[SIZE/64-(1+i)+SIZE*43/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*42/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*42/64] = SortableArray[SIZE/64-(1+i)+SIZE*43/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*43/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism thirteenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*43/64]>SortableArray[SIZE/64-(1+i)+SIZE*44/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*43/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*43/64] = SortableArray[SIZE/64-(1+i)+SIZE*44/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*44/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism fourteenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*44/64]>SortableArray[SIZE/64-(1+i)+SIZE*45/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*44/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*44/64] = SortableArray[SIZE/64-(1+i)+SIZE*45/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*45/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism fifteenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*45/64]>SortableArray[SIZE/64-(1+i)+SIZE*46/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*45/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*45/64] = SortableArray[SIZE/64-(1+i)+SIZE*46/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*46/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism sixteenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*46/64]>SortableArray[SIZE/64-(1+i)+SIZE*47/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*46/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*46/64] = SortableArray[SIZE/64-(1+i)+SIZE*47/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*47/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism seventeenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*47/64]>SortableArray[SIZE/64-(1+i)+SIZE*48/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*47/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*47/64] = SortableArray[SIZE/64-(1+i)+SIZE*48/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*48/64]=temp;
+            }
+        }
+        
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism eightteenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*48/64]>SortableArray[SIZE/64-(1+i)+SIZE*49/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*48/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*48/64] = SortableArray[SIZE/64-(1+i)+SIZE*49/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*49/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism nineteenth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*49/64]>SortableArray[SIZE/64-(1+i)+SIZE*50/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*49/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*49/64] = SortableArray[SIZE/64-(1+i)+SIZE*50/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*50/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentieth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*50/64]>SortableArray[SIZE/64-(1+i)+SIZE*51/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*50/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*50/64] = SortableArray[SIZE/64-(1+i)+SIZE*51/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*51/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyfirst sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*51/64]>SortableArray[SIZE/64-(1+i)+SIZE*52/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*51/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*51/64] = SortableArray[SIZE/64-(1+i)+SIZE*52/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*52/64]=temp;
+            }
+        }
+        
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentysecond sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*52/64]>SortableArray[SIZE/64-(1+i)+SIZE*53/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*52/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*52/64] = SortableArray[SIZE/64-(1+i)+SIZE*53/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*53/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentythird sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*53/64]>SortableArray[SIZE/64-(1+i)+SIZE*54/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*53/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*53/64] = SortableArray[SIZE/64-(1+i)+SIZE*54/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*54/64]=temp;
+            }
+        }
+        
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyfourth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*54/64]>SortableArray[SIZE/64-(1+i)+SIZE*55/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*54/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*54/64] = SortableArray[SIZE/64-(1+i)+SIZE*55/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*55/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyfifth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*55/64]>SortableArray[SIZE/64-(1+i)+SIZE*56/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*55/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*55/64] = SortableArray[SIZE/64-(1+i)+SIZE*56/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*56/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentysixth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*56/64]>SortableArray[SIZE/64-(1+i)+SIZE*57/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*56/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*56/64] = SortableArray[SIZE/64-(1+i)+SIZE*57/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*57/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyseventh sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*57/64]>SortableArray[SIZE/64-(1+i)+SIZE*58/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*57/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*57/64] = SortableArray[SIZE/64-(1+i)+SIZE*58/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*58/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyeighth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*58/64]>SortableArray[SIZE/64-(1+i)+SIZE*59/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*58/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*58/64] = SortableArray[SIZE/64-(1+i)+SIZE*59/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*59/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism twentyninth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*59/64]>SortableArray[SIZE/64-(1+i)+SIZE*60/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*59/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*59/64] = SortableArray[SIZE/64-(1+i)+SIZE*60/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*60/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism thirtieth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*60/64]>SortableArray[SIZE/64-(1+i)+SIZE*61/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*60/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*60/64] = SortableArray[SIZE/64-(1+i)+SIZE*61/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*61/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism thirtyfirst sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*61/64]>SortableArray[SIZE/64-(1+i)+SIZE*62/64]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*61/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*61/64] = SortableArray[SIZE/64-(1+i)+SIZE*62/64];
+                SortableArray[SIZE/64-(1+i)+SIZE*62/64]=temp;
+            }
+        }
+        
+        for (int i=0; i<SIZE/128; i++){ //Swapping mechanism sixtyfourth sixtyfourth
+            if (SortableArray[SIZE/64-(1-i)+SIZE*62/64]>SortableArray[SIZE-(1+i)]){
+                temp = SortableArray[SIZE/64-(1-i)+SIZE*62/64];
+                SortableArray[SIZE/64-(1-i)+SIZE*62/64] = SortableArray[SIZE-(1+i)];
+                SortableArray[SIZE-(1+i)]=temp;
+            }
+        }
+        
+        /*This is the bubble sort*/
+        for (int i=0; i<SIZE-1; i++){
             if (SortableArray[i]>SortableArray[i+1]) {
                 temp = SortableArray[i];
                 SortableArray[i] = SortableArray[i+1];
                 SortableArray[i+1]=temp;
             }else{
-                counter++;
+                counter++; //every time a set is in order, add one to counter
             }
         }
-        if (counter == SIZE-1) {
+        if (counter == SIZE-1) { //if everything is in order, sorted is true
             sorted=true;
         }else{
-            counter=0;
+            counter=0; //otherwise, return it to 0
         }
     }
 }
